@@ -1,0 +1,29 @@
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.Serialization;
+
+namespace ShopReports.Models
+{
+    [Table("person_contacts")]
+    public class PersonContact
+    {
+        [Key]
+        [Column("person_contact_id")]
+        public int Id { get; set; }
+
+        [Column("person_id")]
+        [ForeignKey("Person")]
+        public int PersonId { get; set; }
+
+        [Column("contact_type_id")]
+        [ForeignKey("ContactType")]
+        public int ContactTypeId { get; set; }
+
+        [Column("contact_value")]
+        public string Value { get; set; }
+
+        public Person Person { get; set; }
+
+        public ContactType Type { get; set; }
+    }
+}
